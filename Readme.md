@@ -1,4 +1,4 @@
-Here’s an updated version of the README with the rest of the endpoints included:
+
 
 ---
 
