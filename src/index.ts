@@ -13,6 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use("/api", router); 
 
+
+
+// Landing Page
+app.get('/', (req:Request, res:Response) => {
+  res.send('Server is ready     Go to /api/... for the other endpoints')
+})
+
 // Error handling middleware
 app.use(notFound); 
 app.use(errorHandler); 
