@@ -2,9 +2,9 @@ Here’s an updated version of the README with the rest of the endpoints include
 
 ---
 
-# Imagined Backend API
+# Ecommerce Backend API
 
-The **Imagined Backend API** is a simple server built using **Typescript**, **Express** and **MongoDB**, designed to manage user data. It supports common CRUD operations and is set up for easy deployment to **Vercel**.
+The **Ecommerce Backend API** is a simple server built using **Typescript**, **Express** and **MongoDB**, designed to manage user data. It supports common CRUD operations and is set up for easy deployment to **Vercel**.
 
 ## Features
 
