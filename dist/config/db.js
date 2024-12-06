@@ -12,37 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const route_1 = __importDefault(require("./routes/route"));
-const errorMiddleware_1 = require("./middleware/errorMiddleware");
-const db_1 = __importDefault(require("./config/db"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const app = (0, express_1.default)();
-// Setting up middleware
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: true }));
-app.use("/api", route_1.default);
-// Landing Page
-app.get('/', (req, res) => {
-    res.send('Server is ready     Go to /api/... for the other endpoints');
-});
-// Error handling middleware
-app.use(errorMiddleware_1.notFound);
-app.use(errorMiddleware_1.errorHandler);
-// PORT
-const PORT = process.env.PORT || 5000;
-// Connecting to the database and starting the server
-const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
+const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, db_1.default)();
-        app.listen(PORT, () => {
-            console.log(`Server is listening on port ${PORT}`);
-        });
+        const connectionString = process.env.MONGO_URI || "mongodb://localhost:27017/ecommerce";
+        yield mongoose_1.default.connect(connectionString);
+        console.log("Database connected successfully");
     }
     catch (error) {
         console.error("Database connection failed:", error);
         process.exit(1);
     }
 });
-startServer();
+exports.default = connectDB;
